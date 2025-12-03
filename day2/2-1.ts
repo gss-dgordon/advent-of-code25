@@ -5,7 +5,7 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-function checkInvalidSequence(str: string): boolean {
+export function checkInvalidSequence(str: string): boolean {
     // string must be even and not start with 0
     if (str.length % 2 !== 0) {
         return false;
@@ -19,8 +19,7 @@ function checkInvalidSequence(str: string): boolean {
     // Check if first half matches last half
     return firstHalf === lastHalf;
 }
-
-function main() {
+export function main() {
   const filePath = path.join(__dirname, "2.txt");
   
   try {
@@ -44,5 +43,3 @@ function main() {
     console.error("Error reading file:", err);
   }
 }
-
-main();
