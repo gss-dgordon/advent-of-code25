@@ -50,9 +50,7 @@ async function main() {
   const days: Array<{ day: number; part: number }> = [
     { day: 1, part: 1 },
     { day: 1, part: 2 },
-    // Add more days here as you complete them:
-    // { day: 1, part: 2 },
-    // { day: 2, part: 1 },
+    { day: 2, part: 1 },
     // { day: 2, part: 2 },
     // ... etc
   ];
