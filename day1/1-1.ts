@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 function main() {
-  const filePath = path.join(__dirname, "1-1.txt");
+  const filePath = path.join(__dirname, "1.txt");
   let password = 0;
   let curIndex = 50;
   
