@@ -13,7 +13,12 @@ async function runDay(dayNumber: number, partNumber: number) {
     console.log(`${"=".repeat(50)}\n`);
     
     // Import the day file (use .js extension for ES modules, TypeScript will resolve to .ts)
-    await import(`./${dayFolder}/${dayNumber}-${partNumber}.js`);
+    const dayModule = await import(`./${dayFolder}/${dayNumber}-${partNumber}.js`);
+    
+    // Call the exported main function if it exists
+    if (dayModule.main && typeof dayModule.main === 'function') {
+      dayModule.main();
+    }
   } catch (error) {
     const err = error as NodeJS.ErrnoException;
     if (err.code === "ERR_MODULE_NOT_FOUND" || err.code === "MODULE_NOT_FOUND") {
@@ -51,7 +56,7 @@ async function main() {
     { day: 1, part: 1 },
     { day: 1, part: 2 },
     { day: 2, part: 1 },
-    // { day: 2, part: 2 },
+    { day: 2, part: 2 },
     // ... etc
   ];
   
