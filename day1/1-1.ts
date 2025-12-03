@@ -16,7 +16,7 @@ function main() {
     
     lines.forEach((line) => {
       const direction = line[0];
-      const count = parseInt(line.slice(1) || "0", 10);
+      const count = parseInt(line.slice(1));
       
       switch (direction) {
         case "R":
