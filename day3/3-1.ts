@@ -13,17 +13,17 @@ export function main() {
     const lines = data.split("\n").filter(line => line.trim() !== "");
     let sum = 0;
     lines.forEach((line) => {
-        let highest: number = 0;
+      let highest: number = 0;
 
-        for(let i = 0; i < line.length; i++) {
-            for (let j = i + 1; j < line.length; j++) {
-                const num = parseInt(line.charAt(i) + line.charAt(j));
-                if(num > highest)
-                    highest = num;
-            }
-        };
-        console.log("Jolts: ", highest);
-        sum += highest;
+      for(let i = 0; i < line.length; i++) {
+        for (let j = i + 1; j < line.length; j++) {
+          const num = parseInt(line.charAt(i) + line.charAt(j));
+          if(num > highest)
+            highest = num;
+        }
+      };
+      console.log("Jolts: ", highest);
+      sum += highest;
     });
     
     console.log("Total Jolts: " + sum);
