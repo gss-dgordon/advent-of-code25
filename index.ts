@@ -59,6 +59,7 @@ async function main() {
     { day: 2, part: 2 },
     { day: 3, part: 1 },
     { day: 3, part: 2 },
+    { day: 4, part: 1 },
     // ... etc
   ];
   
