@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 
 export function main() {
   const filePath = path.join(__dirname, "1.txt");
-  
+
   try {
     const data = fs.readFileSync(filePath, "utf-8");
     const lines = data.split("\n").filter(line => line.trim() !== "");
@@ -17,27 +17,27 @@ export function main() {
       grid.push(Array.from(line));
     });
     // rows
-    for(let i = 0; i < grid.length; i++) {
-        // columns
-        const row = grid[i];
-        if (!row) continue;
-        for(let j = 0; j < row.length; j++) {
-            // check adjacent cells for < 4 @s
-            if(row[j] === "@") {
-                let numAdjacent = 0;
-                if(row[j-1] === "@") numAdjacent++;
-                if(row[j+1] === "@") numAdjacent++;
-                if(grid[i-1]?.[j] === "@") numAdjacent++;
-                if(grid[i+1]?.[j] === "@") numAdjacent++;
-                if(grid[i-1]?.[j-1] === "@") numAdjacent++;
-                if(grid[i-1]?.[j+1] === "@") numAdjacent++;
-                if(grid[i+1]?.[j-1] === "@") numAdjacent++;
-                if(grid[i+1]?.[j+1] === "@") numAdjacent++;
-                if(numAdjacent < 4) {
-                    sum++;
-                }
-            }
+    for (let i = 0; i < grid.length; i++) {
+      // columns
+      const row = grid[i];
+      if (!row) continue;
+      for (let j = 0; j < row.length; j++) {
+        // check adjacent cells for < 4 @s
+        if (row[j] === "@") {
+          let numAdjacent = 0;
+          if (row[j - 1] === "@") numAdjacent++;
+          if (row[j + 1] === "@") numAdjacent++;
+          if (grid[i - 1]?.[j] === "@") numAdjacent++;
+          if (grid[i + 1]?.[j] === "@") numAdjacent++;
+          if (grid[i - 1]?.[j - 1] === "@") numAdjacent++;
+          if (grid[i - 1]?.[j + 1] === "@") numAdjacent++;
+          if (grid[i + 1]?.[j - 1] === "@") numAdjacent++;
+          if (grid[i + 1]?.[j + 1] === "@") numAdjacent++;
+          if (numAdjacent < 4) {
+            sum++;
+          }
         }
+      }
     }
     console.log("Sum: " + sum);
   } catch (err) {
