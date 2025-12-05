@@ -6,15 +6,15 @@ const __dirname = path.dirname(__filename);
 
 async function runDay(dayNumber: number, partNumber: number) {
   const dayFolder = `day${dayNumber}`;
-  
+
   try {
     console.log(`\n${"=".repeat(50)}`);
     console.log(`Day ${dayNumber}, Part ${partNumber}`);
     console.log(`${"=".repeat(50)}\n`);
-    
+
     // Import the day file (use .js extension for ES modules, TypeScript will resolve to .ts)
     const dayModule = await import(`./${dayFolder}/${dayNumber}-${partNumber}.js`);
-    
+
     // Call the exported main function if it exists
     if (dayModule.main && typeof dayModule.main === 'function') {
       dayModule.main();
@@ -31,7 +31,7 @@ async function runDay(dayNumber: number, partNumber: number) {
 
 async function main() {
   const args = process.argv.slice(2);
-  
+
   // If specific day/part provided, run only that
   if (args.length >= 1) {
     const dayArg = args[0];
@@ -41,16 +41,16 @@ async function main() {
     }
     const day = parseInt(dayArg, 10);
     const part = args[1] ? parseInt(args[1], 10) : 1;
-    
+
     if (isNaN(day) || day < 1 || day > 25) {
       console.error("Day must be between 1 and 25");
       process.exit(1);
     }
-    
+
     await runDay(day, part);
     return;
   }
-  
+
   // Otherwise, run all days
   const days: Array<{ day: number; part: number }> = [
     { day: 1, part: 1 },
@@ -60,9 +60,10 @@ async function main() {
     { day: 3, part: 1 },
     { day: 3, part: 2 },
     { day: 4, part: 1 },
+    { day: 4, part: 2 },
     // ... etc
   ];
-  
+
   for (const { day, part } of days) {
     await runDay(day, part);
   }
