@@ -31,19 +31,26 @@ Result: 2 fresh IDs
 
 ## Part 2
 
-Instead of counting individual IDs, count the total number of IDs that are considered fresh. This means:
-1. Merge overlapping or adjacent ranges
-2. Count the total number of IDs in all merged ranges
+The Elves start bringing their spoiled inventory to the trash chute at the back of the kitchen.
+
+So that they can stop bugging you when they get new inventory, the Elves would like to know all of the IDs that the fresh ingredient ID ranges consider to be fresh. An ingredient ID is still considered fresh if it is in any range.
+
+Now, the second section of the database (the available ingredient IDs) is irrelevant. You only need to process the fresh ingredient ID ranges.
 
 ### Example
+Here are the fresh ingredient ID ranges from the example:
 ```
-10-20
-15-25
-30-40
+3-5
+10-14
+16-20
+12-18
 ```
 
-Merged ranges: 10-25, 30-40
-Total fresh IDs: (25-10+1) + (40-30+1) = 16 + 11 = 27
+The ingredient IDs that these ranges consider to be fresh are: 3, 4, 5, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, and 20.
+
+After merging overlapping ranges (12-18 overlaps with both 10-14 and 16-20), we get: 3-5, 10-20.
+
+So, in this example, the fresh ingredient ID ranges consider a total of **14 ingredient IDs** to be fresh.
 
 ## Solution
 

@@ -32,9 +32,12 @@ Total: 33210 + 490 + 4247955 + 401 = 4282056
 
 ## Part 2
 
-Process columns from bottom to top instead of top to bottom. The operators are still in the bottom row, but you read numbers from bottom to top.
+The big cephalopods come back to check on how things are going. When they see that your grand total doesn't match the one expected by the worksheet, they realize they forgot to explain how to read cephalopod math.
+
+Cephalopod math is written right-to-left in columns. Each number is given in its own column, with the most significant digit at the top and the least significant digit at the bottom. (Problems are still separated with a column consisting only of spaces, and the symbol at the bottom of the problem is still the operator to use.)
 
 ### Example
+Here's the example worksheet again:
 ```
 123 328  51 64 
  45 64  387 23 
@@ -42,12 +45,16 @@ Process columns from bottom to top instead of top to bottom. The operators are s
 *   +   *   +
 ```
 
-Column 1: 6 * 45 * 123 = 33210 (same in this case)
-Column 2: 98 + 64 + 328 = 490 (same in this case)
-Column 3: 215 * 387 * 51 = 4247955 (same in this case)
-Column 4: 314 + 23 + 64 = 401 (same in this case)
+Reading the problems right-to-left one column at a time, the problems are now quite different:
 
-Note: The order matters for non-commutative operations or if the grid structure differs.
+- **The rightmost problem** is `4 + 431 + 623 = 1058`
+- **The second problem from the right** is `175 * 581 * 32 = 3253600`
+- **The third problem from the right** is `8 + 248 + 369 = 625`
+- **Finally, the leftmost problem** is `356 * 24 * 1 = 8544`
+
+Now, the grand total is `1058 + 3253600 + 625 + 8544 = 3263827`.
+
+**Key difference**: Numbers are read from bottom (least significant digit) to top (most significant digit) within each column, and columns are processed from right to left.
 
 ## Solution
 
